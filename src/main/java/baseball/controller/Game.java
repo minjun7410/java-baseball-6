@@ -7,11 +7,14 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-    private final InputView inputView = new InputView();
+    private final InputView inputView;
+    private final OutputView outputView;
     private final Computer computer = new Computer();
 
-    public Game() {
-        OutputView.printStartText();
+    public Game(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        outputView.printStartText();
     }
 
     public void playGame() {
@@ -22,6 +25,6 @@ public class Game {
             judgement = computer.getJudgement(userNumbers);
             judgement.printResult();
         } while (!judgement.isOut());
-        OutputView.printGameOverText();
+        outputView.printGameOverText();
     }
 }
