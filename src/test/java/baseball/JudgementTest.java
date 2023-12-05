@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.model.Judgement;
+import baseball.model.Number;
+import baseball.model.Numbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,10 @@
-package baseball;
+package baseball.controller;
+
+import baseball.model.Computer;
+import baseball.model.Judgement;
+import baseball.model.Numbers;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class Game {
     private final InputView inputView = new InputView();

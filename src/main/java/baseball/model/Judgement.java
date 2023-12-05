@@ -1,6 +1,7 @@
-package baseball;
+package baseball.model;
 
 import baseball.constant.Constants;
+import baseball.view.OutputView;
 
 public class Judgement {
     private int ballCount = 0;

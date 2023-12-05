@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.InputView;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

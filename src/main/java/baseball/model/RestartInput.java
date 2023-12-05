@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public class RestartInput {
     private static final String RESTART_NUMBER = "1";
