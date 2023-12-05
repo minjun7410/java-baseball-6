@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.constant.Constants;
+
 public class Number {
     private final int number;
 
@@ -9,8 +11,8 @@ public class Number {
     }
 
     public void validateIsNumber(int input) {
-        if (input <= 0 || input > 9) {
-            throw new IllegalArgumentException("1에서 9사이 숫자를 입력해주세요.");
+        if (input <= Constants.MINIMUM_NUMBER.getNumber() - 1 || input > Constants.MAXIMUM_NUMBER.getNumber()) {
+            throw new IllegalArgumentException(String.format("%d에서 %d사이 숫자를 입력해주세요.", Constants.MINIMUM_NUMBER.getNumber(), Constants.MAXIMUM_NUMBER.getNumber()));
         }
     }
 

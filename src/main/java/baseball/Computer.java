@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
@@ -12,10 +13,10 @@ public class Computer {
     }
 
     private void setComputerNumbersToRandom() {
-        boolean[] visitedNumberArray = new boolean[10];
+        boolean[] visitedNumberArray = new boolean[Constants.MAXIMUM_NUMBER.getNumber() + 1];
         int size = 0;
-        while (size < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (size < Constants.MAXIMUM_BALL_COUNT.getNumber()) {
+            int randomNumber = Randoms.pickNumberInRange(Constants.MINIMUM_NUMBER.getNumber(), Constants.MAXIMUM_NUMBER.getNumber());
             if (checkDuplicated(visitedNumberArray, randomNumber)) continue;
             computerNumbers.addNumber(new Number(randomNumber));
             size++;

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.constant.Constants;
+
 public class Judgement {
     private int ballCount = 0;
     private int strikeCount = 0;
@@ -13,11 +15,11 @@ public class Judgement {
     }
 
     public boolean isOut() {
-        return (strikeCount == 3);
+        return (strikeCount == Constants.MAXIMUM_BALL_COUNT.getNumber());
     }
 
     private void calculateCount(Numbers userNumbers, Numbers computerNumbers) {
-        for (int userIndex = 0; userIndex < 3; userIndex++) {
+        for (int userIndex = 0; userIndex < Constants.MAXIMUM_BALL_COUNT.getNumber(); userIndex++) {
             countStrike(userNumbers, computerNumbers, userIndex);
             countBallOneByOne(userNumbers, computerNumbers, userIndex);
         }
@@ -30,7 +32,7 @@ public class Judgement {
     }
 
     private void countBallOneByOne(Numbers userNumbers, Numbers computerNumbers, int userIndex) {
-        for (int computerIndex = 0; computerIndex < 3; computerIndex++) {
+        for (int computerIndex = 0; computerIndex < Constants.MAXIMUM_BALL_COUNT.getNumber(); computerIndex++) {
             if (userIndex == computerIndex) continue;
             countBall(userNumbers.getNumberByIndex(userIndex), computerNumbers.getNumberByIndex(computerIndex));
         }

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.constant.Constants;
+
 public class NumberInput {
     private final String numberInput;
 
@@ -9,14 +11,14 @@ public class NumberInput {
     }
 
     public void validateUserInputSize(String input) {
-        if (input.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+        if (input.length() != Constants.MAXIMUM_BALL_COUNT.getNumber()) {
+            throw new IllegalArgumentException(String.format("%d자리 숫자를 입력해주세요.", Constants.MAXIMUM_BALL_COUNT.getNumber()));
         }
     }
 
     public Numbers getNumbers() {
         Numbers numbers = new Numbers();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.MAXIMUM_BALL_COUNT.getNumber(); i++) {
             numbers.addNumber(new Number(numberInput.charAt(i) - '0'));
         }
         return numbers;
