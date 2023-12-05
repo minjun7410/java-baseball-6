@@ -6,14 +6,18 @@ import baseball.model.RestartInput;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
+    private static final String END_TEXT = "숫자 야구 게임을 종료합니다.";
+    private static final String NUMBER_INPUT_TEXT = "숫자를 입력해주세요 : ";
+    private static final String RESTART_INPUT_TEXT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     public Numbers getUserNumbers() {
-        OutputView.printNumberInputText();
+        System.out.print(NUMBER_INPUT_TEXT);
         NumberInput numberInput = new NumberInput(Console.readLine().trim());
         return numberInput.getNumbers();
     }
 
     public boolean getRestartInput() {
-        OutputView.printRestartInputText();
+        System.out.println(RESTART_INPUT_TEXT);
         return getOneOrTwo(Console.readLine());
     }
 
@@ -23,7 +27,7 @@ public class InputView {
         if (restartInput.isOne()) {
             return true;
         }
-        OutputView.printEndText();
+        System.out.println(END_TEXT);
         return false;
     }
 
