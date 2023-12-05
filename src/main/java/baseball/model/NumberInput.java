@@ -5,7 +5,7 @@ import baseball.constant.Constants;
 public class NumberInput {
     private final String numberInput;
 
-    NumberInput(String numberInput) {
+    public NumberInput(String numberInput) {
         validateUserInputSize(numberInput);
         this.numberInput = numberInput;
     }

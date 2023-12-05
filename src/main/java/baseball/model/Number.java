@@ -5,7 +5,7 @@ import baseball.constant.Constants;
 public class Number {
     private final int number;
 
-    Number(int number) {
+    public Number(int number) {
         validateIsNumber(number);
         this.number = number;
     }

@@ -5,7 +5,7 @@ public class RestartInput {
     private static final String TERMINATE_NUMBER = "2";
     private final String restartInput;
 
-    RestartInput(String restartInput) {
+    public RestartInput(String restartInput) {
         validateOneOrTwo(restartInput);
         this.restartInput = restartInput;
     }
