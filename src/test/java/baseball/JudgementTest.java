@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.dto.JudgeResultDTO;
 import baseball.model.Judgement;
 import baseball.model.Number;
 import baseball.model.Numbers;
@@ -12,38 +13,51 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JudgementTest {
-    ByteArrayOutputStream testOut = new ByteArrayOutputStream();
     Numbers computerNumbers;
 
     @BeforeEach
     void setting() {
-        System.setOut(new PrintStream(testOut));
         computerNumbers = makeNumbers(new int[]{1, 2, 3});
     }
 
     @Test
     void 판정테스트_3스트라이크() {
-        assertJudgeResultOutput(makeNumbers(new int[]{1, 2, 3}), computerNumbers, "3스트라이크\n");
+        JudgeResultDTO result = getResult(new int[]{1, 2, 3});
+        assertThat(result.getBallCount()).isEqualTo(0);
+        assertThat(result.getStrikeCount()).isEqualTo(3);
     }
 
     @Test
     void 판정테스트_3볼() {
-        assertJudgeResultOutput(makeNumbers(new int[]{2, 3, 1}), computerNumbers, "3볼\n");
+        JudgeResultDTO result = getResult(new int[]{2, 3, 1});
+        assertThat(result.getBallCount()).isEqualTo(3);
+        assertThat(result.getStrikeCount()).isEqualTo(0);
     }
 
     @Test
     void 판정테스트_1볼() {
-        assertJudgeResultOutput(makeNumbers(new int[]{3, 5, 6}), computerNumbers, "1볼\n");
+        JudgeResultDTO result = getResult(new int[]{3, 5, 6});
+        assertThat(result.getBallCount()).isEqualTo(1);
+        assertThat(result.getStrikeCount()).isEqualTo(0);
     }
 
     @Test
     void 판정테스트_1볼1스트라이크() {
-        assertJudgeResultOutput(makeNumbers(new int[]{1, 3, 6}), computerNumbers, "1볼 1스트라이크\n");
+        JudgeResultDTO result = getResult(new int[]{1, 3, 6});
+        assertThat(result.getBallCount()).isEqualTo(1);
+        assertThat(result.getStrikeCount()).isEqualTo(1);
     }
 
     @Test
     void 판정테스트_2볼1스트라이크() {
-        assertJudgeResultOutput(makeNumbers(new int[]{3, 2, 1}), computerNumbers, "2볼 1스트라이크\n");
+        JudgeResultDTO result = getResult(new int[]{3, 2, 1});
+        assertThat(result.getBallCount()).isEqualTo(2);
+        assertThat(result.getStrikeCount()).isEqualTo(1);
+    }
+
+    JudgeResultDTO getResult(int[] list) {
+        Judgement result = new Judgement(makeNumbers(list), computerNumbers);
+        return result.getResult();
     }
 
     Numbers makeNumbers(int[] list) {
@@ -52,12 +66,5 @@ public class JudgementTest {
             numbers.addNumber(new Number(number));
         }
         return numbers;
-    }
-
-    void assertJudgeResultOutput(Numbers userNumbers, Numbers computerNumbers, String outputToCompare) {
-        Judgement result = new Judgement(userNumbers, computerNumbers);
-        result.getResult();
-        assertThat(testOut.toString()).isEqualTo(outputToCompare);
-        testOut.reset();
     }
 }
