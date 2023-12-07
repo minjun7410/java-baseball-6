@@ -23,8 +23,4 @@ public class NumberInput {
         }
         return numbers;
     }
-
-    public int getNumberByIndex(int index) {
-        return numberInput.charAt(index) - '0';
-    }
 }

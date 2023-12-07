@@ -23,7 +23,7 @@ public class Game {
         do {
             Numbers userNumbers = inputView.getUserNumbers();
             judgement = computer.getJudgement(userNumbers);
-            judgement.printResult();
+            outputView.printJudgeResult(judgement.getResult());
         } while (!judgement.isOut());
         outputView.printGameOverText();
     }

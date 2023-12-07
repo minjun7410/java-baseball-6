@@ -56,7 +56,7 @@ public class JudgementTest {
 
     void assertJudgeResultOutput(Numbers userNumbers, Numbers computerNumbers, String outputToCompare) {
         Judgement result = new Judgement(userNumbers, computerNumbers);
-        result.printResult();
+        result.getResult();
         assertThat(testOut.toString()).isEqualTo(outputToCompare);
         testOut.reset();
     }

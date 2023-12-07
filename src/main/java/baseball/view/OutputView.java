@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.dto.JudgeResultDTO;
+
 public class OutputView{
     private static final String START_TEXT = "숫자 야구 게임을 시작합니다.";
     private static final String GAME_OVER_TEXT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -16,7 +18,10 @@ public class OutputView{
         System.out.println(GAME_OVER_TEXT);
     }
 
-    public void printCountText(int ballCount, int strikeCount){
+    public void printJudgeResult(JudgeResultDTO judgeResultDTO){
+        int ballCount = judgeResultDTO.getBallCount();
+        int strikeCount = judgeResultDTO.getStrikeCount();
+
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println(NOTHING_TEXT);
             return;

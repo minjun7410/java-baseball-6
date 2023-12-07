@@ -1,7 +1,7 @@
 package baseball.model;
 
 import baseball.constant.Constants;
-import baseball.view.OutputView;
+import baseball.dto.JudgeResultDTO;
 
 public class Judgement {
     private int ballCount = 0;
@@ -11,8 +11,8 @@ public class Judgement {
         calculateCount(userNumbers, computerNumbers);
     }
 
-    public void printResult() {
-        OutputView.printCountText(ballCount, strikeCount);
+    public JudgeResultDTO getResult() {
+        return new JudgeResultDTO(ballCount, strikeCount);
     }
 
     public boolean isOut() {
